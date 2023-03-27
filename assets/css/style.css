@@ -8,6 +8,10 @@ body {
   background-color: #eff5f8
 }
 
+.main {
+  height: 15vh;
+}
+
 h2 {
   font-size: 3em;
   margin: 0px;

@@ -51,19 +51,36 @@
             </div>
         </div>
     </nav>
+
     <div class="container">
+        <div class="card card-body col-10 m-3">
+            <h1 class="card-header">Speed Reader</h1>
+            <h2 id="countdown"></h2>
+            <p id="main"></p>
+        </div>
+
         <div class="row">
             <div class="card card-body col-3 m-3">
-                <h1 class="card-header">Speed Reader</h1>
-                <h2 id="countdown"></h2>
-                <p id="main"></p>
+                <h1 class="card-header">Mouse Actions</h1>
+                <button class="mt-4" id="big-button">Button</button>
+                <div>
+                    <h3 class="mt-4" id="mouse-response"></h3>
+                </div>
             </div>
 
-            <div class="card card-body col-3 m-3">
-                <h1 class="card-header">Mouse Actions</h1>
-                <button id="big-button">Button</button>
-                <div>
-                    <h3 id="mouse-response"></h3>
+            <div class="card col-4 m-3 p-3">
+                <h1 class="card-header">Key Actions</h1>
+                <div id="key-events">
+                    <div id="title">
+                        <h2>keydown ⬇️ and keyup ⬆️ </h2>
+                        Key Pressed : <span id="key"></span>
+                    </div>
+                    <div>
+                        Key Code : <span id="code"></span>
+                    </div>
+                    <div>
+                        Event status : <span id="status"></span>
+                    </div>
                 </div>
             </div>
 
@@ -96,23 +113,7 @@
         </div>
 
         <div class="row">
-            <div class="card col-4 m-3 p-3">
-                <h1 class="card-header">Key Actions</h1>
-                <div id="key-events">
-                    <div id="title">
-                        <h2>keydown ⬇️ and keyup ⬆️ </h2>
-                        Key Pressed : <span id="key"></span>
-                    </div>
-                    <div>
-                        Key Code : <span id="code"></span>
-                    </div>
-                    <div>
-                        Event status : <span id="status"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card col-4">
+            <div class="card col-6">
                 <h1>Todo Tracker</h1>
                 <form id="todo-form" method="POST">
                     <label for="todo-text">Add a Todo: </label>
@@ -122,7 +123,7 @@
                 <ul id="todo-list"></ul>
             </div>
 
-            <div class="wrapper col-4">
+            <div class="wrapper col-sm-4">
                 <div class="card">
                     <h4>Current Count: <span id="count"></span></h4>
                     <button id="decrement">Decrement</button>
@@ -131,7 +132,21 @@
             </div>
         </div>        
 
-        <div class="row">
+        <div class="card col-10">
+            <h1>Tip Calculator</h1>
+            <h3>Enter the total price of your meal below</h3>
+            <form id="form">
+                <input type="text" id="total" placeholder="total price of meal" />
+                <input type="text" id="tip-percentage" placeholder="tip percentage" />
+                <button id="tipSubmit">Calculate Tip</button>
+            </form>
+            <div class="tip-area">
+                <h2>Tip amount: <span id="tip-amount"></span></h2>
+                <h2>Total: <span id="new-total"></span></h2>
+            </div>
+        </div>
+
+        <div class="row">            
             <div class="card col-4">
                 <div class="card-content">
                     <h1>Contact Page</h1>
@@ -145,21 +160,7 @@
                     </form>
                 </div>
             </div>
-
-            <div class="card col-4">
-                <h1>Tip Calculator</h1>
-                <h3>Enter the total price of your meal below</h3>
-                <form id="form">
-                    <input type="text" id="total" placeholder="total price of meal" />
-                    <input type="text" id="tip-percentage" placeholder="tip percentage" />
-                    <button id="tipSubmit">Calculate Tip</button>
-                </form>
-                <div class="tip-area">
-                    <h2>Tip amount: <span id="tip-amount"></span></h2>
-                    <h2>Total: <span id="new-total"></span></h2>
-                </div>
-            </div>
-            <div class="card col-sm-4">
+            <div class="card col-sm-6 mt-4">
                 <h2>Enter a Grade</h2>
                 <form>
                     <div>
@@ -192,8 +193,74 @@
             </div>
         </div>
 
+        <div class="bg-dark min-100-vh flex-row align-center justify-center col-10 mt-4">
+            <div class="col-11 col-sm-8">
+                <h1 class="text-light">Free Pizza Raffle Sign Up!</h1>
+                <div class="card rounded bg-light p-3">
+                    <div class="card-body">
+                        <form id="pizza-form">
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" class="form-input" name="first-name"
+                                        placeholder="Enter first name" />
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" class="form-input" name="last-name"
+                                        placeholder="Enter last name" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-input" name="email"
+                                        placeholder="Enter email" />
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="github">GitHub</label>
+                                    <input type="text" class="form-input" name="github"
+                                        placeholder="Enter GitHub" />
+                                </div>
+                            </div>
+                            <fieldset class="group">
+                                <legend>Select standard pizza toppings</legend>
+                                <ul class="checkbox">
+                                    <li>
+                                        <input type="checkbox" id="cb1" value="pepperoni" />
+                                        <label for="cb1">Pepperoni</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="cb2" value="sausage" />
+                                        <label for="cb2">Sausage</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="cb3" value="mushrooms" />
+                                        <label for="cb3">Mushrooms</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="cb4" value="onions" />
+                                        <label for="cb4">Onions</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="cb5" value="green peppers" />
+                                        <label for="cb5">Green Peppers</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="cb6" value="extra cheese" />
+                                        <label for="cb6">Extra Cheese</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <button class="btn btn-block btn-danger">Submit Form</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="card col-8">
+            <div class="card col-7 mt-4">
                 <h2>Sign Up</h2>
                 <form method="POST">
                     <div class="input-group">
@@ -228,7 +295,7 @@
             </div>            
 
             <div class="row">
-                <div class="card col-4">
+                <div class="card col-5 my-4">
                     <div class="img-container">
                         <h1 class="img-h1">Click on Image Below</h1>
                         <img src="https://media0.giphy.com/media/4Zo41lhzKt6iZ8xff9/200w_s.gif"
@@ -250,71 +317,6 @@
                     </div>
                 </div>
 
-                <div class="bg-dark min-100-vh flex-row align-center justify-center col-4">
-                    <div class="col-11 col-sm-8">
-                        <h1 class="text-light">Free Pizza Raffle Sign Up!</h1>
-                        <div class="card rounded bg-light p-3">
-                            <div class="card-body">
-                                <form id="pizza-form">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6">
-                                            <label for="first-name">First Name</label>
-                                            <input type="text" class="form-input" name="first-name"
-                                                placeholder="Enter first name" />
-                                        </div>
-                                        <div class="col-12 col-sm-6">
-                                            <label for="last-name">Last Name</label>
-                                            <input type="text" class="form-input" name="last-name"
-                                                placeholder="Enter last name" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-input" name="email"
-                                                placeholder="Enter email" />
-                                        </div>
-                                        <div class="col-12 col-sm-6">
-                                            <label for="github">GitHub</label>
-                                            <input type="text" class="form-input" name="github"
-                                                placeholder="Enter GitHub" />
-                                        </div>
-                                    </div>
-                                    <fieldset class="group">
-                                        <legend>Select standard pizza toppings</legend>
-                                        <ul class="checkbox">
-                                            <li>
-                                                <input type="checkbox" id="cb1" value="pepperoni" />
-                                                <label for="cb1">Pepperoni</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="cb2" value="sausage" />
-                                                <label for="cb2">Sausage</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="cb3" value="mushrooms" />
-                                                <label for="cb3">Mushrooms</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="cb4" value="onions" />
-                                                <label for="cb4">Onions</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="cb5" value="green peppers" />
-                                                <label for="cb5">Green Peppers</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="cb6" value="extra cheese" />
-                                                <label for="cb6">Extra Cheese</label>
-                                            </li>
-                                        </ul>
-                                    </fieldset>
-                                    <button class="btn btn-block btn-danger">Submit Form</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="card col-4">
                     <h4>Click on the image to view</h4>
@@ -332,7 +334,7 @@
                 </div>
             </div>
 
-            <div id="card col-4">
+            <div id="card col-10 mt-4">
                 <div id="gameHeader">
                     <div class="large-font">Word Guess Game</div>
                     <button class="start-button">Start</button>
