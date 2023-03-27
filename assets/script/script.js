@@ -56,6 +56,25 @@ var timer;
 var timerCount;
 var timerEl = document.getElementById('countdown');
 var mainEl = document.getElementById('main');
+var carousel = document.querySelector(".carouselbox");
+var next = carousel.querySelector(".next");
+var prev = carousel.querySelector(".prev");
+var index = 0;
+var currentImage;
+var formEl = $('#pizza-form');
+var firstNameEl = $('input[name="first-name"]');
+var lastNameEl = $('input[name="last-name"]');
+var emailEl = $('input[name="email"]');
+var githubEl = $('input[name="github"]');
+
+var images = [
+  "https://picsum.photos/300/200",
+  "https://picsum.photos/300/201",
+  "https://picsum.photos/300/202",
+  "https://picsum.photos/300/203"
+];
+
+carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
 
 document.querySelector("#count").textContent = localStorage.getItem("count");
 
@@ -92,7 +111,16 @@ function parameterFunction(firstParam, secondParam) {
 
 parameterFunction("I am the first parameter", "I am the second parameter");
 
-contactSubmitEl.addEventListener("click", showResponse);
+contactSubmitEl.addEventListener("click", ()=> {
+    preventDefault();
+    var submitName = document.querySelector("#name").value;
+    console.log(submitName);
+
+    if (submitName && submitEmail) {
+    } else {
+        return console.log("Response is False.");
+    }
+});
 
 function showResponse(myEvent) {
     myEvent.preventDefault();
@@ -138,7 +166,6 @@ clearEl.addEventListener('click', function (event) {
 });
 
 textAreaEl.addEventListener('keydown', function (event) {
-    console.log("The " + event.key + " key was pressed");
     h1El.textContent += event.key;
     h2El.textContent += event.key;
     h3El.textContent += event.key;
@@ -176,18 +203,18 @@ myBigButton.addEventListener("click", function () {
 });
 
 myBigButton.addEventListener("mouseover", function () {
-    console.log("Mouse is over the big button!");
-    document.querySelector("#mouse-response").textContent = "Mouse is over the big button!"
     var myFontSize = Math.floor(Math.random() * (100 - 20 + 1) + 20);
-    myBigButton.setAttribute("style", "font-size: " + myFontSize + "px;")
+    document.querySelector("#mouse-response").textContent = "Mouse is over the big " + myFontSize + " size button!";
+    myBigButton.setAttribute("style", "font-size: " + myFontSize + "px;");
+    myBigButton.textContent = "BIG";
 });
 
 myBigButton.addEventListener("mouseleave", function () {
-    console.log("Mouse is over the big button!");
     var fontFamilies = ["Comic Sans MS", "Franklin Gothic Medium", "Impact", "Arial", "Brush Script MT"];
     var myFontFamily = fontFamilies[Math.floor(Math.random() * fontFamilies.length)];
-    myBigButton.setAttribute("style", "font-family: " + myFontFamily + ";")
-    document.querySelector("#mouse-response").textContent = "Font-Family = " + myFontFamily
+    myBigButton.setAttribute("style", "font-family: " + myFontFamily + ";");
+    document.querySelector("#mouse-response").textContent = "Font-Family = " + myFontFamily;
+    myBigButton.textContent = "Button";
 });
 
 
@@ -487,7 +514,7 @@ resetButton.addEventListener("click", resetGame);
 
 var message =
   'Some say the world will end in 🔥, Some say in ice. From what I’ve tasted of desire, I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate. To say that for destruction ice, Is also great, And would suffice.';
-var words = message.split(' ');
+var countdownWords = message.split(' ');
 
 function countdown() {
   var timeLeft = 5;
@@ -512,14 +539,66 @@ function displayMessage() {
   var wordCount = 0;
 
   var msgInterval = setInterval(function () {
-    if (words[wordCount] === undefined) {
+    if (countdownWords[wordCount] === undefined) {
       clearInterval(msgInterval);
 
     } else {
-      mainEl.textContent = words[wordCount];
+      mainEl.textContent = countdownWords[wordCount];
       wordCount++;
     }
   }, 1000);
 }
 
 countdown();
+
+function navigate(direction) {
+    index = index + direction;
+    if (index < 0) { 
+      index = images.length - 1; 
+    } else if (index > images.length - 1) { 
+      index = 0;
+    }
+    currentImage = images[index];
+    carousel.style.backgroundImage = "url('" + currentImage + "')";
+  }
+  
+  carousel.addEventListener("click", function() {
+    window.location.href = images[index];
+  });
+  
+  next.addEventListener("click", function(event) {
+    event.stopPropagation();
+  
+    navigate(1);
+  });
+  
+  prev.addEventListener("click", function(event) {
+    event.stopPropagation();
+  
+    navigate(-1);
+  });
+  
+  navigate(0);
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+  
+    console.log('First Name:', firstNameEl.val());
+    console.log('Last Name:', lastNameEl.val());
+    console.log('Email:', emailEl.val());
+    console.log('GitHub:', githubEl.val());
+  
+    var checkedEl = $('input:checked');
+    var selected = [];
+  
+    $.each(checkedEl, function () {
+      selected.push($(this).val());
+    });
+    console.log('Toppings: ', selected.join(', '));
+  
+    $('input[type="text"]').val('');
+    $('input[type="email"]').val('');
+    $('input[type="checkbox"]').prop('checked', false);
+  }
+  
+  formEl.on('submit', handleFormSubmit);
