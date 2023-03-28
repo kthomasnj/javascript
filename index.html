@@ -84,6 +84,26 @@
                 </div>
             </div>
 
+            <div class="wrapper col-sm-4">
+                <div class="card">
+                    <h4>Current Count: <span id="count"></span></h4>
+                    <button id="decrement">Decrement</button>
+                    <button id="increment">Increment</button>
+                </div>
+            </div>
+        </div>  
+
+        <div class="row">
+            <div class="card col-6">
+                <h1>Todo Tracker</h1>
+                <form id="todo-form" method="POST">
+                    <label for="todo-text">Add a Todo: </label>
+                    <input class="input" type="text" placeholder="I need to..." name="todo-text" id="todo-text" />
+                </form>
+                <p>Todo Count: <span id="todo-count">0</span></p>
+                <ul id="todo-list"></ul>
+            </div>
+
             <div class="card col-3 m-3 p-3">
                 <h1 class="card-header">Keyboard Actions</h1>
                 <h3 class="typeface-container">Select serif or monospace</h3>
@@ -110,27 +130,7 @@
                     <p id="p"></p>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="card col-6">
-                <h1>Todo Tracker</h1>
-                <form id="todo-form" method="POST">
-                    <label for="todo-text">Add a Todo: </label>
-                    <input class="input" type="text" placeholder="I need to..." name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-            </div>
-
-            <div class="wrapper col-sm-4">
-                <div class="card">
-                    <h4>Current Count: <span id="count"></span></h4>
-                    <button id="decrement">Decrement</button>
-                    <button id="increment">Increment</button>
-                </div>
-            </div>
-        </div>        
+        </div>                
 
         <div class="card col-10">
             <h1>Tip Calculator</h1>
